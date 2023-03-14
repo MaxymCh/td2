@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+import 'UI/td2.dart';
+
 void main(){
-  runapp(cont MyTD2());
+  runApp(MyTD2());
 }
