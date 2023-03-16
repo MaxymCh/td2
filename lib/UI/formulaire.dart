@@ -1,21 +1,18 @@
-import 'package:flutter/cupertino.dart';
+// Ajoutez un typedef pour le callback d'ajout de tâche
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:td2/UI/taskViewModel.dart';
 
-import '../model/task.dart';
-import 'formulaire.dart';
+typedef AddTaskCallback = void Function(String title);
 
-class AddTask extends StatefulWidget {
-  const AddTask({Key? key, required this.taskViewModel}) : super(key: key);
+class MyCustomForm extends StatefulWidget {
+  const MyCustomForm({Key? key, required this.onAddTask}) : super(key: key);
 
-  final TaskViewModel taskViewModel;
+  final AddTaskCallback onAddTask;
 
   @override
-  State<AddTask> createState() => _AddTaskState();
+  State<MyCustomForm> createState() => _MyCustomFormState();
 }
 
-class _AddTaskState extends State<AddTask> {
+class _MyCustomFormState extends State<MyCustomForm> {
   final myController = TextEditingController();
 
   @override
@@ -38,9 +35,9 @@ class _AddTaskState extends State<AddTask> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          widget.taskViewModel.addTaskWithTitle(myController.text);
+          // Utilisez le callback pour ajouter une tâche
+          widget.onAddTask(myController.text);
           myController.clear();
-          Navigator.pop(context);
         },
         tooltip: 'Add Task',
         child: const Icon(Icons.add),

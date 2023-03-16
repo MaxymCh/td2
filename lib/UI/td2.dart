@@ -7,19 +7,6 @@ import 'package:td2/theme/mytheme.dart';
 
 import 'home.dart';
 
-/*
-class MyTD2 extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    final theme = MyTheme.dark();
-    return MaterialApp(
-      theme: theme,
-        title: "TD",
-      home:Home(),
-    );
-  }
-}*/
-
 
 class MyTD2 extends StatelessWidget{
   @override
