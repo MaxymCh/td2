@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:td2/UI/detailTask.dart';
 import 'package:td2/UI/taskViewModel.dart';
 
 import '../model/task.dart';
@@ -29,6 +30,37 @@ class Card1 extends StatelessWidget {
               ),
               title: Text(taskViewModel.tasks[index].title),
               subtitle: Text(taskViewModel.tasks[index].tags.join(" ")),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailTask(task: taskViewModel.tasks[index], taskViewModel: taskViewModel),
+                  ),
+                );
+              },
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailTask(task: taskViewModel.tasks[index], taskViewModel: taskViewModel),
+                        ),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      taskViewModel.deleteTasks(taskViewModel.tasks[index].id);
+                    },
+                  ),
+                ],
+              ),
+
             ),
           ),
         );

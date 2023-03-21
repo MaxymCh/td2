@@ -8,6 +8,16 @@ class TaskViewModel extends ChangeNotifier {
 
   void generateTasks() {
     _tasks = Task.generateTask(50);
+    Task.nb += 50;
+    notifyListeners();
+  }
+
+  void deleteTasks(int id) {
+    for(var tache in _tasks){
+      if(tache.id == id){
+        _tasks.remove(tache);
+      }
+    }
     notifyListeners();
   }
 

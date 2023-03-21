@@ -28,22 +28,6 @@ class Task {
     };
   }
 
-  // Define a function that inserts dogs into the database
-  Future<void> insertTask(Task task) async {
-    // Get a reference to the database.
-    final db = await database;
-
-    // Insert the Dog into the correct table. You might also specify the
-    // `conflictAlgorithm` to use in case the same dog is inserted twice.
-    //
-    // In this case, replace any previous data.
-    await db.insert(
-      'dogs',
-      dog.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
     id: json['id'],
