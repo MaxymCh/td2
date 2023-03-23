@@ -7,22 +7,16 @@ import '../model/task.dart';
 import 'formulaire.dart';
 
 class AddTask extends StatefulWidget {
-  const AddTask({Key? key, required this.taskViewModel}) : super(key: key);
+  const AddTask({Key? key, required this.taskViewModel, this.task}) : super(key: key);
 
   final TaskViewModel taskViewModel;
+  final Task? task;
 
   @override
   State<AddTask> createState() => _AddTaskState();
 }
 
 class _AddTaskState extends State<AddTask> {
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    myController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +26,12 @@ class _AddTaskState extends State<AddTask> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: TextField(
-          controller: myController,
+          child: MyCustomForm(
+            task: widget.task,
+            taskViewModel: widget.taskViewModel,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          widget.taskViewModel.addTaskWithTitle(myController.text);
-          myController.clear();
-          Navigator.pop(context);
-        },
-        tooltip: 'Add Task',
-        child: const Icon(Icons.add),
-      ),
+
     );
   }
 }

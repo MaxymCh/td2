@@ -69,6 +69,10 @@ class Task {
     data['tags'] = this.tags;
     return data;
   }
+
+  void updateTitle(String newTitle) {
+    this.title = newTitle;
+  }
   static List<Task> generateTask(int i){
     return List.generate(i,
             (index) =>

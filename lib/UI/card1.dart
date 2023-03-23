@@ -4,6 +4,7 @@ import 'package:td2/UI/detailTask.dart';
 import 'package:td2/UI/taskViewModel.dart';
 
 import '../model/task.dart';
+import 'AddTask.dart';
 import 'formulaire.dart';
 
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class Card1 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailTask(task: taskViewModel.tasks[index], taskViewModel: taskViewModel),
+                          builder: (context) => AddTask(taskViewModel: taskViewModel, task: taskViewModel.tasks[index]),
                         ),
                       );
                     },

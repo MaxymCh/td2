@@ -21,9 +21,28 @@ class TaskViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addOrUpdateTask(String title, Task? task) {
+    if (task == null){
+      addTaskWithTitle(title);
+    }
+    else{
+      updateTaskTitle(title, task);
+    }
+  }
+
   void addTaskWithTitle(String title) {
     int id = _tasks.length + 1;
     _tasks.add(Task.newTaskWithTitle(title));
     notifyListeners();
+  }
+
+  void updateTaskTitle(String title, Task task) {
+    for(var tache in _tasks){
+      if(tache.id == task.id){
+        tache.updateTitle(title);
+      }
+    }
+    notifyListeners();
+
   }
 }
